@@ -45,8 +45,16 @@
 				<td><form:input path="team_one" /></td>
 			</tr>
 			<tr>
+				<td>team_one_score</td>
+				<td><form:input path="team_one_score" /></td>
+			</tr>
+			<tr>
 				<td>team_two</td>
 				<td><form:input path="team_two" /></td>
+			</tr>
+			<tr>
+				<td>team_two_score</td>
+				<td><form:input path="team_two_score" /></td>
 			</tr>
 			<tr>
 				<td>league</td>
@@ -65,6 +73,10 @@
 			<tr>
 				<td>date</td>
 				<td><form:input type="date" path="date" value="date"/></td>
+			</tr>
+			<tr>
+				<td>time</td>
+				<td><form:input path="time" /></td>
 			</tr>
 		</table>
 		<input type="submit" value="수정하기" />

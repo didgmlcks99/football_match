@@ -64,9 +64,14 @@
 				<td>date:</td>
 				<td><input type="date" name="date"></input></td>
 			</tr>
+			<tr>
+				<td>time:</td>
+				<td><input type="text" name="time" /></td>
+			</tr>
 		</table>
 		<button type="button" onclick="location.href='list'">목록보기</button>
 		<button type="submit">등록하기</button>
+		<input type="reset" value="취소">
 	</form>
 </body>
 </html>

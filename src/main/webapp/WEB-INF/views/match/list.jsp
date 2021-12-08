@@ -53,9 +53,12 @@
 		<tr>
 			<th>id</th>
 			<th>team_one</th>
+			<th>team_one_score</th>
+			<th>team_two_score</th>
 			<th>team_two</th>
 			<th>league</th>
 			<th>date</th>
+			<th>time</th>
 			<th>edit</th>
 			<th>delete</th>
 		</tr>
@@ -63,9 +66,12 @@
 			<tr>
 				<td>${u.seq}</td>
 				<td>${u.team_one}</td>
+				<td>${u.team_one_score}</td>
+				<td>${u.team_two_score}</td>
 				<td>${u.team_two}</td>
 				<td>${u.league}</td>
 				<td>${u.date}</td>
+				<td>${u.time}</td>
 				<td><a href="editform/${u.seq}">경기 항목 수정</a></td>
 				<td><a href="javascript:delete_ok('${u.seq}')">경기 항목 삭제</a></td>
 			</tr>

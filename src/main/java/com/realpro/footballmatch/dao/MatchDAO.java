@@ -21,11 +21,11 @@ public class MatchDAO {
 		this.template = template;
 	}
 	
-	private final String MATCH_INSERT = "insert into football_match (team_one, team_two, league, date) values (?,?,?,?)";
-	private final String MATCH_UPDATE = "update football_match set team_one=?, team_two=?, league=?, date=? where seq=?";
-	private final String MATCH_DELETE = "delete from football_match  where seq=?";
-	private final String MATCH_GET = "select * from football_match  where seq=?";
-	private final String MATCH_LIST = "select * from football_match order by seq desc";
+	private final String MATCH_INSERT = "insert into football_match (team_one, team_two, league, date, time) values (?,?,?,?,?)";
+	private final String MATCH_UPDATE = "update football_match set team_one=?, team_one_score=?, team_two_score=?, team_two=?, league=?, date=?, time=? where seq=?";
+	private final String MATCH_DELETE = "delete from football_match where seq=?";
+	private final String MATCH_GET = "select * from football_match where seq=?";
+	private final String MATCH_LIST = "select * from football_match order by date desc";
 	
 	public int insertMatch(MatchVO vo) throws ParseException {
 		System.out.println("===> JDBC로 insertMatch() 기능 처리");
@@ -33,7 +33,7 @@ public class MatchDAO {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = format.parse(vo.getDate());
 		
-		return template.update(MATCH_INSERT, new Object[] {vo.getTeam_one(), vo.getTeam_two(), vo.getLeague(), date});
+		return template.update(MATCH_INSERT, new Object[] {vo.getTeam_one(), vo.getTeam_two(), vo.getLeague(), date, vo.getTime()});
 	}
 	
 	public int deleteMatch(int id) {
@@ -47,7 +47,7 @@ public class MatchDAO {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = format.parse(vo.getDate());
 		
-		return template.update(MATCH_UPDATE, new Object[] {vo.getTeam_one(), vo.getTeam_two(), vo.getLeague(), date, vo.getSeq()});
+		return template.update(MATCH_UPDATE, new Object[] {vo.getTeam_one(), vo.getTeam_one_score(), vo.getTeam_two_score(), vo.getTeam_two(), vo.getLeague(), date, vo.getTime(), vo.getSeq()});
 	}
 
 	public MatchVO getMatch(int seq) {
@@ -67,9 +67,12 @@ public class MatchDAO {
 				MatchVO data = new MatchVO();
 				data.setSeq(rs.getInt("seq"));
 				data.setTeam_one(rs.getString("team_one"));
+				data.setTeam_one_score(rs.getString("team_one_score"));
+				data.setTeam_two_score(rs.getString("team_two_score"));
 				data.setTeam_two(rs.getString("team_two"));
 				data.setLeague(rs.getString("league"));
 				data.setDate(format.format(rs.getDate("date")));
+				data.setTime(rs.getString("time"));
 				return data;
 			}
 		});

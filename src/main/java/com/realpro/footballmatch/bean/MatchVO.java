@@ -6,6 +6,9 @@ public class MatchVO {
 	private String team_two;
 	private String league;
 	private String date;
+	private String team_one_score;
+	private String team_two_score;
+	private String time;
 
 	public int getSeq() {
 		return seq;
@@ -46,4 +49,29 @@ public class MatchVO {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
+	public String getTeam_one_score() {
+		return team_one_score;
+	}
+
+	public void setTeam_one_score(String team_one_score) {
+		this.team_one_score = team_one_score;
+	}
+
+	public String getTeam_two_score() {
+		return team_two_score;
+	}
+
+	public void setTeam_two_score(String team_two_score) {
+		this.team_two_score = team_two_score;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+	
 }
