@@ -1,13 +1,11 @@
 package com.realpro.footballmatch.bean;
 
-import java.util.Date;
-
 public class MatchVO {
 	private int seq;
 	private String team_one;
 	private String team_two;
 	private String league;
-	private Date date;
+	private String date;
 
 	public int getSeq() {
 		return seq;
@@ -41,11 +39,11 @@ public class MatchVO {
 		this.league = league;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 }

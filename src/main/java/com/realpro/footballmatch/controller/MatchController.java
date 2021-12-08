@@ -1,5 +1,6 @@
 package com.realpro.footballmatch.controller;
 
+import java.text.ParseException;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +27,19 @@ public class MatchController {
 
 	@RequestMapping(value = "/match/add", method = RequestMethod.GET)
 	public String addForm() {
-		return "board/addform";
+		return "match/addform";
 	}
 
 	@RequestMapping(value = "/match/addok", method = RequestMethod.POST)
 	public String addOK(MatchVO vo) {
-		int i = matchDAO.insertMatch(vo);
+		int i = 0;
+		
+		try {
+			i = matchDAO.insertMatch(vo);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		if (i == 0) {
 			System.out.println("데이터 추가 실패!");
@@ -51,7 +59,14 @@ public class MatchController {
 
 	@RequestMapping(value = "/match/editok", method = RequestMethod.POST)
 	public String editOK(MatchVO vo) {
-		int i = matchDAO.updateMatch(vo);
+		int i = 0;
+		
+		try {
+			i = matchDAO.updateMatch(vo);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		if (i == 0) {
 			System.out.println("데이터 수정 실패!");

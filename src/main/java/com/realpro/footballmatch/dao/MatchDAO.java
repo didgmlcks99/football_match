@@ -2,6 +2,9 @@ package com.realpro.footballmatch.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -24,9 +27,13 @@ public class MatchDAO {
 	private final String MATCH_GET = "select * from football_match  where seq=?";
 	private final String MATCH_LIST = "select * from football_match order by seq desc";
 	
-	public int insertMatch(MatchVO vo) {
+	public int insertMatch(MatchVO vo) throws ParseException {
 		System.out.println("===> JDBC로 insertMatch() 기능 처리");
-		return template.update(MATCH_INSERT, new Object[] {vo.getTeam_one(), vo.getTeam_two(), vo.getLeague(), vo.getDate()});
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = format.parse(vo.getDate());
+		
+		return template.update(MATCH_INSERT, new Object[] {vo.getTeam_one(), vo.getTeam_two(), vo.getLeague(), date});
 	}
 	
 	public int deleteMatch(int id) {
@@ -34,9 +41,13 @@ public class MatchDAO {
 		return template.update(MATCH_DELETE, new Object[] {id});
 	}
 
-	public int updateMatch(MatchVO vo) {
+	public int updateMatch(MatchVO vo) throws ParseException {
 		System.out.println("===> JDBC로 updateMatch() 기능 처리");
-		return template.update(MATCH_UPDATE, new Object[] {vo.getTeam_one(), vo.getTeam_two(), vo.getLeague(), vo.getDate(), vo.getSeq()});
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date date = format.parse(vo.getDate());
+		
+		return template.update(MATCH_UPDATE, new Object[] {vo.getTeam_one(), vo.getTeam_two(), vo.getLeague(), date, vo.getSeq()});
 	}
 
 	public MatchVO getMatch(int seq) {
@@ -47,6 +58,8 @@ public class MatchDAO {
 	public List<MatchVO> getMatchList() {
 		System.out.println("===> JDBC로 getMatchList() 기능 처리");
 		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		
 		return template.query(MATCH_LIST, new RowMapper<MatchVO>() {
 			
 			@Override
@@ -56,7 +69,7 @@ public class MatchDAO {
 				data.setTeam_one(rs.getString("team_one"));
 				data.setTeam_two(rs.getString("team_two"));
 				data.setLeague(rs.getString("league"));
-				data.setDate(rs.getDate("date"));
+				data.setDate(format.format(rs.getDate("date")));
 				return data;
 			}
 		});
