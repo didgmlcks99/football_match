@@ -28,9 +28,6 @@ public class MatchDAO {
 	
 	public int insertMatch(MatchVO vo) throws ParseException {
 		System.out.println("===> JDBC로 insertMatch() 기능 처리");
-
-//		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//		Date date = format.parse(vo.getDate());
 		
 		int result = sqlSession.insert("Match.insertMatch", vo);
 		return result;
@@ -38,9 +35,6 @@ public class MatchDAO {
 	
 	public int updateMatch(MatchVO vo) throws ParseException {
 		System.out.println("===> JDBC로 updateMatch() 기능 처리");
-		
-//		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-//		Date date = format.parse(vo.getDate());
 		
 		int result = sqlSession.update("Match.updateMatch", vo);
 		return result;

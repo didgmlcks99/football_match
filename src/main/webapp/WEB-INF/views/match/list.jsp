@@ -49,6 +49,7 @@
 <body>
 
 <h1>축구 경기 목록</h1>
+<button type="button" onclick="location.href='../login/login'">로그아웃</button>
 	<table id="list" width="90%">
 		<tr>
 			<th>id</th>
