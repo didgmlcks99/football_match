@@ -31,9 +31,9 @@
 	<beans:bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="ds"></beans:property>
 	</beans:bean>
-	<beans:bean id="dao" class="com.realpro.footballmatch.match.MatchDAO">
+	<!-- <beans:bean id="dao" class="com.realpro.footballmatch.match.MatchDAO">
 		<beans:property name="template" ref="jt"></beans:property>
-	</beans:bean>
+	</beans:bean> -->
 	
 	<context:component-scan base-package="com.realpro.footballmatch" />
 	

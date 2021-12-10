@@ -1,6 +1,5 @@
 package com.realpro.footballmatch.match;
 
-import java.text.ParseException;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MatchController {
 
 	@Autowired
-	MatchDAO matchDAO;
+	MatchService matchService;
 
 	@RequestMapping(value = "/match/list", method = RequestMethod.GET)
 	public String matchList(Locale locale, Model model) {
-		model.addAttribute("list", matchDAO.getMatchList());
+		model.addAttribute("list", matchService.getMatchList());
 		return "match/list";
 	}
 
@@ -31,12 +30,7 @@ public class MatchController {
 	public String addOK(MatchVO vo) {
 		int i = 0;
 		
-		try {
-			i = matchDAO.insertMatch(vo);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		i = matchService.insertMatch(vo);
 
 		if (i == 0) {
 			System.out.println("데이터 추가 실패!");
@@ -49,7 +43,7 @@ public class MatchController {
 
 	@RequestMapping(value = "/match/editform/{id}", method = RequestMethod.GET)
 	public String editForm(@PathVariable("id") int id, Model model) {
-		MatchVO matchVO = matchDAO.getMatch(id);
+		MatchVO matchVO = matchService.getMatch(id);
 		model.addAttribute("matchVO", matchVO);
 		return "match/editform";
 	}
@@ -58,12 +52,7 @@ public class MatchController {
 	public String editOK(MatchVO vo) {
 		int i = 0;
 		
-		try {
-			i = matchDAO.updateMatch(vo);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		i = matchService.updateMatch(vo);
 
 		if (i == 0) {
 			System.out.println("데이터 수정 실패!");
@@ -76,7 +65,7 @@ public class MatchController {
 
 	@RequestMapping(value = "/match/deleteok/{id}", method = RequestMethod.GET)
 	public String deletePost(@PathVariable("id") int id) {
-		int i = matchDAO.deleteMatch(id);
+		int i = matchService.deleteMatch(id);
 
 		if (i == 0) {
 			System.out.println("데이터 삭제 실패!");
