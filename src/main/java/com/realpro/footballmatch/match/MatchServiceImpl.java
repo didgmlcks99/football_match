@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MatchServiceImpl implements MatchService{
-	
+public class MatchServiceImpl implements MatchService {
+
 	@Autowired
 	MatchDAO matchDAO;
 

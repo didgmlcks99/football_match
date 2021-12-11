@@ -49,7 +49,7 @@ public class MatchVO {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
+
 	public String getTeam_one_score() {
 		return team_one_score;
 	}
@@ -73,5 +73,5 @@ public class MatchVO {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	
+
 }

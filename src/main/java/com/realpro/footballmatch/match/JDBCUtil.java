@@ -18,7 +18,7 @@ public class JDBCUtil {
 
 	public static void main(String ars[]) {
 		Connection conn = getConnection();
-		if(conn != null)
+		if (conn != null)
 			System.out.println("DB 연결됨!");
 		else
 			System.out.println("DB 연결중 오류 !");

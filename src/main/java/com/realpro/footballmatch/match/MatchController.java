@@ -29,7 +29,7 @@ public class MatchController {
 	@RequestMapping(value = "/match/addok", method = RequestMethod.POST)
 	public String addOK(MatchVO vo) {
 		int i = 0;
-		
+
 		i = matchService.insertMatch(vo);
 
 		if (i == 0) {
@@ -51,7 +51,7 @@ public class MatchController {
 	@RequestMapping(value = "/match/editok", method = RequestMethod.POST)
 	public String editOK(MatchVO vo) {
 		int i = 0;
-		
+
 		i = matchService.updateMatch(vo);
 
 		if (i == 0) {

@@ -3,26 +3,32 @@
 <mapper namespace="Match">
 
 	<insert id="insertMatch">
-		insert into football_match(team_one, team_two, league, date, time)
-		values(#{team_one}, #{team_two}, #{league}, #{date}, #{time})
+		insert into football_match(team_one, team_two,
+		league, date, time)
+		values(#{team_one}, #{team_two}, #{league},
+		#{date}, #{time})
 	</insert>
-	
+
 	<update id="updateMatch">
 		update football_match
-		set team_one=#{team_one}, team_one_score=#{team_one_score}, team_two_score=#{team_two_score}, team_two=#{team_two}, league=#{league}, date=#{date}, time=#{time}
+		set team_one=#{team_one},
+		team_one_score=#{team_one_score}, team_two_score=#{team_two_score},
+		team_two=#{team_two}, league=#{league}, date=#{date}, time=#{time}
 		where seq=#{seq}
 	</update>
-	
+
 	<delete id="deleteMatch">
 		delete from football_match where seq=#{seq}
 	</delete>
-	
+
 	<select id="getMatch" resultType="match">
-		select * from football_match where seq=#{seq}
+		select * from football_match
+		where seq=#{seq}
 	</select>
-	
+
 	<select id="getMatchList" resultType="match">
-		select * from football_match order by seq desc
+		select * from
+		football_match order by date desc
 	</select>
-	
+
 </mapper>

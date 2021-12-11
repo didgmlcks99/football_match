@@ -4,7 +4,9 @@
 	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="match" type="com.realpro.footballmatch.match.MatchVO"/>
-		<typeAlias alias="user" type="com.realpro.footballmatch.user.UserVO"/>
+		<typeAlias alias="match"
+			type="com.realpro.footballmatch.match.MatchVO" />
+		<typeAlias alias="user"
+			type="com.realpro.footballmatch.user.UserVO" />
 	</typeAliases>
 </configuration>
